@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZeroRag-AI | Report Ragging</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+  <!-- SEO + Branding -->
+  <meta name="description" content="ZeroRag-AI: Secure, anonymous ragging report system with AI-powered detection and instant alerts.">
+  <meta name="keywords" content="Anti-ragging, College safety, AI reporting, Student safety, ZeroRag-AI">
+  <meta name="author" content="ZeroRag-AI Team">
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="ZeroRag-AI Logo" class="logo">
+    <h1>ZeroRag-AI</h1>
+    <p class="tagline">AI-Powered Safe Reporting System</p>
+  </header>
+
+  <main>
+    <section class="report-box">
+      <h2>Report an Incident</h2>
+      <form id="reportForm">
+        
+        <!-- Location -->
+        <label for="location"><i class="fas fa-map-marker-alt"></i> Location</label>
+        <input type="text" id="location" name="location" placeholder="Enter or select location" required>
+
+        <label for="nearby">Location Type</label>
+        <select id="nearby" name="nearby">
+          <option value="at">At</option>
+          <option value="near">Near</option>
+        </select>
+        <label for="offender"> Offender ( who ragged you? )</label>
+        <input type="text" id="offender" name="offender" placeholder="Mention the details of the offender." required>
+
+        <!-- Details -->
+        <label for="details"><i class="fas fa-info-circle"></i> Incident Details</label>
+        <textarea id="details" name="details" rows="4" placeholder="Describe what happened..." required></textarea>
+
+        <!-- Optional Name -->
+        <label for="name"><i class="fas fa-user"></i> Your Name (Optional)</label>
+        <input type="text" id="name" name="name" placeholder="Leave empty to stay anonymous">
+
+        <!-- AI Assist -->
+        <div class="ai-box">
+          <button type="button" id="aiAssistBtn">AI Assist</button>
+          <p class="ai-note">AI can help redact sensitive info & auto-route your report.</p>
+        </div>
+
+        <!-- Report Button -->
+        <button type="submit" class="report-btn">🚨 Report Now</button>
+      </form>
+    </section>
+
+    <!-- Quick Contacts -->
+    <section class="contacts">
+      <h2>Quick Contacts</h2>
+      <div class="contact-grid">
+        <a href="tel:+916369592479"><button onclick="contact('authority')">College Authority</button></a>
+        <a href="tel:+916369592479"><button onclick="contact('cell')">Anti-Ragging Cell</button></a>
+        <a href="tel:+916369592479"><button onclick="contact('boys')">Boys Hostel</button></a>
+        <a href="tel:+916369592479"><button onclick="contact('girls')">Girls Hostel</button></a>
+        </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 ZeroRag-AI | All Rights Reserved</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
