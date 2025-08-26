@@ -35,22 +35,23 @@ function contact(target) {
   switch (target) {
     case "authority":
       msg = "Calling College Authority...";
-      phone = "+916369592479";
+      phone = "+919876543210";
       break;
     case "cell":
       msg = "Contacting Anti-Ragging Cell...";
-      phone = "+916369592479";
+      phone = "+919876543210";
       break;
     case "boys":
       msg = "Alerting Boys Hostel Warden...";
-      phone = "+916369592479";
+      phone = "+919876543210";
       break;
     case "girls":
       msg = "Alerting Girls Hostel Warden...";
-      phone = "+916369592479";
+      phone = "+919876543210";
       break;
   }
 
   alert(`📞 ${msg}`);
   window.location.href = `tel:${phone}`;
 }
+
