@@ -1,76 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZeroRag-AI | Report Ragging</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-
-  <!-- SEO + Branding -->
-  <meta name="description" content="ZeroRag-AI: Secure, anonymous ragging report system with AI-powered detection and instant alerts.">
-  <meta name="keywords" content="Anti-ragging, College safety, AI reporting, Student safety, ZeroRag-AI">
-  <meta name="author" content="ZeroRag-AI Team">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZeroRag-AI — Report</title>
+  <meta name="description" content="ZeroRag-AI — simple, anonymous ragging reporting. Fast emergency calls.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <img src="assets/logo.png" alt="ZeroRag-AI Logo" class="logo">
-    <h1>ZeroRag-AI</h1>
-    <p class="tagline">AI-Powered Safe Reporting System</p>
-  </header>
+  <header class="site-header">
+    <div class="brand">
+      <div class="badge">ZR</div>
+      <div class="titles">
+        <h1>ZeroRag-AI</h1>
+        <p class="subtitle">Report simply. Stay safe. Trusted AI assist.</p>
+      </div>
+    </div>
+    <div class="meta">
+      <button id="aiQuick" class="ghost">AI Assist</button>
+    </div>
+  </header>
 
-  <main>
-    <section class="report-box">
-      <h2>Report an Incident</h2>
-      <form id="reportForm">
-        
-        <!-- Location -->
-        <label for="location"><i class="fas fa-map-marker-alt"></i> Location</label>
-        <input type="text" id="location" name="location" placeholder="Enter or select location" required>
+  <main class="container" id="app">
+    <section class="flow" role="form" aria-labelledby="flowTitle">
+      <h2 id="flowTitle" class="flow-title">Tell us, in order — we’ll help structure it</h2>
 
-        <label for="nearby">Location Type</label>
-        <select id="nearby" name="nearby">
-          <option value="at">At</option>
-          <option value="near">Near</option>
-        </select>
-        <label for="offender"> Offender ( who ragged you? )</label>
-        <input type="text" id="offender" name="offender" placeholder="Mention the details of the offender." required>
+      <!-- Step 0: Where -->
+      <article class="step" data-step="0">
+        <div class="step-label">1. Location</div>
+        <div class="inline-field">
+          <input id="location" name="location" type="text" placeholder="Where did it happen? e.g. North Block, Hostel A" autocomplete="off" />
+          <select id="locType" aria-label="Location type">
+            <option value="at">At</option>
+            <option value="near">Near</option>
+          </select>
+        </div>
+        <div class="hint">Tap Enter to move next · Auto-suggest can be added later</div>
+      </article>
 
-        <!-- Details -->
-        <label for="details"><i class="fas fa-info-circle"></i> Incident Details</label>
-        <textarea id="details" name="details" rows="4" placeholder="Describe what happened..." required></textarea>
+      <!-- Step 1: Offender (short) -->
+      <article class="step" data-step="1">
+        <div class="step-label">2. Offender (optional)</div>
+        <div class="inline-field">
+          <input id="offender" name="offender" type="text" placeholder="Senior / group / description — or leave blank" />
+        </div>
+        <div class="hint">Leave blank to stay anonymous about others</div>
+      </article>
 
-        <!-- Optional Name -->
-        <label for="name"><i class="fas fa-user"></i> Your Name (Optional)</label>
-        <input type="text" id="name" name="name" placeholder="Leave empty to stay anonymous">
+      <!-- Step 2: What happened (free text) -->
+      <article class="step" data-step="2">
+        <div class="step-label">3. What happened</div>
+        <div class="long-field">
+          <textarea id="details" name="details" rows="4" placeholder="Describe what happened — be natural & brief."></textarea>
+        </div>
+        <div class="hint">Be concise — AI will summarize & redact sensitive info.</div>
+      </article>
 
-        <!-- AI Assist -->
-        <div class="ai-box">
-          <button type="button" id="aiAssistBtn">AI Assist</button>
-          <p class="ai-note">AI can help redact sensitive info & auto-route your report.</p>
-        </div>
+      <!-- Step 3: Submit (name optional + actions) -->
+      <article class="step" data-step="3">
+        <div class="step-label">4. Your details (optional)</div>
+        <div class="inline-field">
+          <input id="name" name="name" type="text" placeholder="Your name (optional)" />
+          <input id="contact" name="contact" type="text" inputmode="tel" placeholder="Phone / email (optional)" />
+        </div>
 
-        <!-- Report Button -->
-        <button type="submit" class="report-btn">🚨 Report Now</button>
-      </form>
-    </section>
+        <div class="actions">
+          <button id="aiAssistBtn" class="primary">Run AI Assist</button>
+          <button id="submitBtn" class="accent">Report — Secure & Anonymous</button>
+        </div>
 
-    <!-- Quick Contacts -->
-    <section class="contacts">
-      <h2>Quick Contacts</h2>
-      <div class="contact-grid">
-        <a href="tel:+916369592479"><button onclick="contact('authority')">College Authority</button></a>
-        <a href="tel:+916369592479"><button onclick="contact('cell')">Anti-Ragging Cell</button></a>
-        <a href="tel:+916369592479"><button onclick="contact('boys')">Boys Hostel</button></a>
-        <a href="tel:+916369592479"><button onclick="contact('girls')">Girls Hostel</button></a>
-        </div>
-    </section>
-  </main>
+        <div class="result" id="result" aria-live="polite"></div>
+      </article>
+    </section>
+  </main>
 
-  <footer>
-    <p>© 2025 ZeroRag-AI | All Rights Reserved</p>
-  </footer>
+  <!-- Floating emergency bar -->
+  <aside class="emergency">
+    <button class="em-btn em-hotline" id="helplineBtn" title="Anti-ragging helpline">🛡 Helpline</button>
+    <button class="em-btn em-emerg" id="emergBtn" title="Campus emergency">🚨 Emergency</button>
+  </aside>
 
-  <script src="app.js"></script>
+  <footer class="site-footer">
+    <small>© 2025 ZeroRag-AI • Built for students — privacy first</small>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
+
