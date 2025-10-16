@@ -1,91 +1,90 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ZeroRag-AI — Report</title>
-  <meta name="description" content="ZeroRag-AI — simple, anonymous ragging reporting. Fast emergency calls.">
-  <link rel="icon" href="assets/favicon.ico">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZeroRag-AI — Report</title>
+  <meta name="description" content="ZeroRag-AI — simple, anonymous ragging reporting. Fast emergency calls.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">
-      <div class="badge">ZR</div>
-      <div class="titles">
-        <h1>ZeroRag-AI</h1>
-        <p class="subtitle">Report simply. Stay safe. Trusted AI assist.</p>
-      </div>
-    </div>
-    <div class="meta">
-      <button id="aiQuick" class="ghost">AI Assist</button>
-    </div>
-  </header>
+  <header class="site-header">
+    <div class="brand">
+      <div class="badge">ZR</div>
+      <div class="titles">
+        <h1>ZeroRag-AI</h1>
+        <p class="subtitle">Report simply. Stay safe. Trusted AI assist.</p>
+      </div>
+    </div>
+    <div class="meta">
+      <button id="aiQuick" class="ghost">AI Assist</button>
+    </div>
+  </header>
 
-  <main class="container" id="app">
-    <section class="flow" role="form" aria-labelledby="flowTitle">
-      <h2 id="flowTitle" class="flow-title">Tell us, in order — we’ll help structure it</h2>
+  <main class="container" id="app">
+    <section class="flow" role="form" aria-labelledby="flowTitle">
+      <h2 id="flowTitle" class="flow-title">Tell us, in order — we’ll help structure it</h2>
 
-      <!-- Step 0: Where -->
-      <article class="step" data-step="0">
-        <div class="step-label">1. Location</div>
-        <div class="inline-field">
-          <input id="location" name="location" type="text" placeholder="Where did it happen? e.g. North Block, Hostel A" autocomplete="off" />
-          <select id="locType" aria-label="Location type">
-            <option value="at">At</option>
-            <option value="near">Near</option>
-          </select>
-        </div>
-        <div class="hint">Tap Enter to move next · Auto-suggest can be added later</div>
-      </article>
+      <!-- Step 0: Where -->
+      <article class="step" data-step="0">
+        <div class="step-label">1. Location</div>
+        <div class="inline-field">
+          <input id="location" name="location" type="text" placeholder="Where did it happen? e.g. North Block, Hostel A" autocomplete="off" />
+          <select id="locType" aria-label="Location type">
+            <option value="at">At</option>
+            <option value="near">Near</option>
+          </select>
+        </div>
+        <div class="hint">Tap Enter to move next · Auto-suggest can be added later</div>
+      </article>
 
-      <!-- Step 1: Offender (short) -->
-      <article class="step" data-step="1">
-        <div class="step-label">2. Offender (optional)</div>
-        <div class="inline-field">
-          <input id="offender" name="offender" type="text" placeholder="Senior / group / description — or leave blank" />
-        </div>
-        <div class="hint">Leave blank to stay anonymous about others</div>
-      </article>
+      <!-- Step 1: Offender (short) -->
+      <article class="step" data-step="1">
+        <div class="step-label">2. Offender (optional)</div>
+        <div class="inline-field">
+          <input id="offender" name="offender" type="text" placeholder="Senior / group / description — or leave blank" />
+        </div>
+        <div class="hint">Leave blank to stay anonymous about others</div>
+      </article>
 
-      <!-- Step 2: What happened (free text) -->
-      <article class="step" data-step="2">
-        <div class="step-label">3. What happened</div>
-        <div class="long-field">
-          <textarea id="details" name="details" rows="4" placeholder="Describe what happened — be natural & brief."></textarea>
-        </div>
-        <div class="hint">Be concise — AI will summarize & redact sensitive info.</div>
-      </article>
+      <!-- Step 2: What happened (free text) -->
+      <article class="step" data-step="2">
+        <div class="step-label">3. What happened</div>
+        <div class="long-field">
+          <textarea id="details" name="details" rows="4" placeholder="Describe what happened — be natural & brief."></textarea>
+        </div>
+        <div class="hint">Be concise — AI will summarize & redact sensitive info.</div>
+      </article>
 
-      <!-- Step 3: Submit (name optional + actions) -->
-      <article class="step" data-step="3">
-        <div class="step-label">4. Your details (optional)</div>
-        <div class="inline-field">
-          <input id="name" name="name" type="text" placeholder="Your name (optional)" />
-          <input id="contact" name="contact" type="text" inputmode="tel" placeholder="Phone / email (optional)" />
-        </div>
+      <!-- Step 3: Submit (name optional + actions) -->
+      <article class="step" data-step="3">
+        <div class="step-label">4. Your details (optional)</div>
+        <div class="inline-field">
+          <input id="name" name="name" type="text" placeholder="Your name (optional)" />
+          <input id="contact" name="contact" type="text" inputmode="tel" placeholder="Phone / email (optional)" />
+        </div>
 
-        <div class="actions">
-          <button id="aiAssistBtn" class="primary">Run AI Assist</button>
-          <button id="submitBtn" class="accent">Report — Secure & Anonymous</button>
-        </div>
+        <div class="actions">
+          <button id="aiAssistBtn" class="primary">Run AI Assist</button>
+          <button id="submitBtn" class="accent">Report — Secure & Anonymous</button>
+        </div>
 
-        <div class="result" id="result" aria-live="polite"></div>
-      </article>
-    </section>
-  </main>
+        <div class="result" id="result" aria-live="polite"></div>
+      </article>
+    </section>
+  </main>
 
-  <!-- Floating emergency bar -->
-  <aside class="emergency">
-    <button class="em-btn em-hotline" id="helplineBtn" title="Anti-ragging helpline">🛡 Helpline</button>
-    <button class="em-btn em-emerg" id="emergBtn" title="Campus emergency">🚨 Emergency</button>
-  </aside>
+  <!-- Floating emergency bar -->
+  <aside class="emergency">
+    <button class="em-btn em-hotline" id="helplineBtn" title="Anti-ragging helpline">🛡 Helpline</button>
+    <button class="em-btn em-emerg" id="emergBtn" title="Campus emergency">🚨 Emergency</button>
+  </aside>
 
-  <footer class="site-footer">
-    <small>© 2025 ZeroRag-AI • Built for students — privacy first</small>
-  </footer>
+  <footer class="site-footer">
+    <small>© 2025 ZeroRag-AI • Built for students — privacy first</small>
+  </footer>
 
-  <script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
-
