@@ -6,7 +6,7 @@
   <title>ZeroRag-AI — Report</title>
   <meta name="description" content="ZeroRag-AI — simple, anonymous ragging reporting. Fast emergency calls.">
   <link rel="icon" href="assets/favicon.ico">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
   <header class="site-header">
@@ -27,17 +27,16 @@
       <h2 id="flowTitle" class="flow-title">Tell us, in order — we’ll help structure it</h2>
 
       <!-- Step 0: Where -->
+      <!-- Update the Location Step -->
       <article class="step" data-step="0">
         <div class="step-label">1. Location</div>
         <div class="inline-field">
           <input id="location" name="location" type="text" placeholder="Where did it happen? e.g. North Block, Hostel A" autocomplete="off" />
-          <select id="locType" aria-label="Location type">
-            <option value="at">At</option>
-            <option value="near">Near</option>
-          </select>
+          <!-- Add Live Location Button -->
+          <button id="liveLocationBtn" type="button" class="live-location-btn">Use Live Location</button>
         </div>
-        <div class="hint">Tap Enter to move next · Auto-suggest can be added later</div>
       </article>
+
 
       <!-- Step 1: Offender (short) -->
       <article class="step" data-step="1">
@@ -85,6 +84,6 @@
     <small>© 2025 ZeroRag-AI • Built for students — privacy first</small>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
